@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Love Story Iphit ❤️ Maesaroh</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+color:white;
+text-align:center;
+overflow:hidden;
+
+background-image:url("background.jpg");
+background-size:cover;
+background-position:center;
+}
+
+/* overlay cinematic */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+}
+
+/* opening */
+
+#opening{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-size:42px;
+background:black;
+animation:fadeout 6s forwards;
+z-index:10;
+}
+
+@keyframes fadeout{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+/* main content */
+
+#content{
+position:absolute;
+top:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+/* photo */
+
+.photo{
+width:220px;
+height:220px;
+border-radius:50%;
+border:4px solid white;
+object-fit:cover;
+margin-top:20px;
+}
+
+/* letter */
+
+.letter{
+max-width:600px;
+font-size:20px;
+margin-top:20px;
+line-height:1.6;
+}
+
+/* heart rain */
+
+.heart{
+position:fixed;
+top:-10px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px);}
+100%{transform:translateY(100vh);}
+}
+
+/* buttons */
+
+button{
+padding:14px 26px;
+font-size:18px;
+border:none;
+border-radius:12px;
+margin:10px;
+cursor:pointer;
+}
+
+#yes{
+background:#ff2e63;
+color:white;
+}
+
+#no{
+background:#333;
+color:white;
+position:absolute;
+}
+
+</style>
+
+<script>
+
+/* heart animation */
+
+function heartRain(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(10+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+
+}
+
+setInterval(heartRain,300);
+
+
+/* play music */
+
+function startMusic(){
+document.getElementById("music").play();
+}
+
+
+/* romantic button */
+
+function love(){
+alert("Maesaroh ❤️\n\nTerima kasih sudah hadir di hidup Iphit.\nSemoga cerita kita tidak pernah berakhir.");
+}
+
+
+/* impossible button */
+
+function moveButton(){
+
+var btn=document.getElementById("no");
+
+var x=Math.random()*(window.innerWidth-150);
+var y=Math.random()*(window.innerHeight-80);
+
+btn.style.left=x+"px";
+btn.style.top=y+"px";
+
+}
+
+</script>
+
+</head>
+
+<body onclick="startMusic()">
+
+<div id="opening">
+<div>Love Story</div>
+<div style="font-size:28px;margin-top:10px;">Iphit ❤️ Maesaroh</div>
+</div>
+
+<audio id="music" loop>
+<source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<div id="content">
+
+<h1>Hai Maesaroh ❤️</h1>
+
+<img src="foto1.jpg" class="photo">
+
+<div class="letter">
+
+Mungkin ini hanya sebuah halaman kecil.
+Tapi setiap kata di dalamnya dibuat dengan perasaan yang tulus.
+
+Sejak mengenalmu, banyak hal terasa berbeda.
+Hari-hari terasa lebih hangat.
+
+Dan entah kenapa…
+namamu selalu hadir di pikiranku.
+
+</div>
+
+<h2>Maesaroh, maukah kamu terus menjadi bagian dari cerita Iphit?</h2>
+
+<button id="yes" onclick="love()">Aku mau ❤️</button>
+
+<button id="no" onmouseover="moveButton()">Aku tidak mau 😆</button>
+
+</div>
+
+</body>
+</html>

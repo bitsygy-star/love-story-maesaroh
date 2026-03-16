@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-<title>Love Story Maesaroh ❤️</title>
+<title>Love Story Iphit ❤️ Maesaroh</title>
 
 <style>
 
 body{
 margin:0;
-font-family:'Segoe UI',sans-serif;
+font-family:Segoe UI;
 color:white;
 text-align:center;
 overflow:hidden;
-background-image:url("background.jpg");
+
+background:url(background.jpg);
 background-size:cover;
 background-position:center;
 }
 
+/* overlay */
+
 body::before{
 content:"";
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,0.55);
+top:0;
+left:0;
+z-index:-1;
 }
+
+/* opening */
 
 #opening{
 position:fixed;
 width:100%;
 height:100%;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-font-size:42px;
 background:black;
+font-size:45px;
 animation:fadeout 6s forwards;
-z-index:10;
+z-index:5;
 }
 
 @keyframes fadeout{
@@ -47,6 +52,8 @@ z-index:10;
 80%{opacity:1;}
 100%{opacity:0;visibility:hidden;}
 }
+
+/* content */
 
 #content{
 position:absolute;
@@ -60,44 +67,51 @@ align-items:center;
 padding:20px;
 }
 
-.photo{
+/* slideshow */
+
+.slideshow{
 width:220px;
 height:220px;
 border-radius:50%;
+overflow:hidden;
 border:4px solid white;
-object-fit:cover;
-margin-top:20px;
 }
+
+.slide{
+width:100%;
+height:100%;
+object-fit:cover;
+position:absolute;
+opacity:0;
+transition:1s;
+}
+
+.active{
+opacity:1;
+}
+
+/* letter */
 
 .letter{
 max-width:600px;
 font-size:20px;
 margin-top:20px;
-line-height:1.6;
+line-height:1.7;
 }
 
-.heart{
-position:fixed;
-top:-10px;
-animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10px);}
-100%{transform:translateY(100vh);}
-}
+/* buttons */
 
 button{
-padding:14px 26px;
+padding:14px 28px;
 font-size:18px;
 border:none;
 border-radius:12px;
-margin:10px;
 cursor:pointer;
+margin:10px;
 }
 
 #yes{
-background:#008000;
+background:#2ecc71;
 color:white;
 }
 
@@ -105,63 +119,42 @@ color:white;
 background:#ff2e63;
 color:white;
 position:absolute;
-left:50%;
+left:60%;
 top:80%;
-transform:translate(-50%,-50%);
+}
+
+/* heart rain */
+
+.heart{
+position:fixed;
+top:-10px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
 }
 
 </style>
 
-<script>
-
-function heartRain(){
-
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(10+Math.random()*30)+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{heart.remove();},6000);
-
-}
-
-setInterval(heartRain,300);
-
-function startMusic(){
-let music=document.getElementById("music");
-music.play().catch(()=>{});
-}
-
-function love(){
-alert("Maesaroh ❤️\n\nTerima kasih telah memilih 'MAU' 🥰\nTerima kasih sudah hadir di hidupku mae.\nSemoga cerita kita tidak pernah berakhir.\nI LOVE YOU Maesaroh ❤️❤️❤️");
-}
-
-function moveButton(){
-
-let btn=document.getElementById("no");
-
-let x=Math.random()*(window.innerWidth-200);
-let y=Math.random()*(window.innerHeight-100);
-
-btn.style.left=x+"px";
-btn.style.top=y+"px";
-
-}
-
-</script>
-
 </head>
 
-<body onclick="startMusic()">
+<body>
 
 <div id="opening">
+
 <div>Love Story</div>
-<div style="font-size:28px;margin-top:10px;">Iphit ❤️ Maesaroh</div>
-<div style="font-size:15px;margin-bottom:2px;">Klik dimanapun untuk memutar musik</div>
+
+<div style="font-size:28px;margin-top:10px">
+Iphit ❤️ Maesaroh
+</div>
+
+<div style="font-size:15px;margin-top:10px">
+Klik layar untuk memulai
+</div>
+
 </div>
 
 <audio id="music" loop>
@@ -172,28 +165,116 @@ btn.style.top=y+"px";
 
 <h1>Hai Maesaroh ❤️</h1>
 
-<img src="foto1.jpg" class="photo">
+<div class="slideshow">
+
+<img src="foto1.jpg" class="slide active">
+<img src="foto2.jpg" class="slide">
+<img src="foto3.jpg" class="slide">
+
+</div>
 
 <div class="letter">
 
-Mungkin ini hanya sebuah halaman kecil.
-Tapi setiap kata di dalamnya dibuat dengan perasaan yang tulus.
+Kadang kita tidak tahu bagaimana sebuah cerita dimulai.
 
-Sejak mengenalmu, banyak hal terasa berbeda.
-Hari-hari terasa lebih hangat.
+Tapi sejak aku mengenalmu,
+hidup terasa lebih hangat.
 
-Dan entah kenapa…
-namamu selalu hadir di pikiranku.
+Ada sesuatu dalam dirimu
+yang membuat hari-hari terasa berbeda.
+
+Dan tanpa sadar,
+namamu selalu ada dalam doaku.
+
+</div>
+
+<h2>Maesaroh ❤️</h2>
+
+<h3>Maukah kamu terus menjadi bagian dari cerita Iphit?</h3>
+
+<button id="yes" onclick="love()">Aku Mau ❤️</button>
+
+<button id="no" onmouseover="moveButton()">Aku Tidak Mau 😆</button>
 
 </div>
 
-<h2>Maesaroh, maukah kamu terus menjadi bagian dari cerita Iphit?</h2>
+<script>
 
-<button id="yes" onclick="love()">Aku mau ❤️</button>
+/* start music */
 
-<button id="no" onmouseover="moveButton()">Aku tidak mau 😆</button>
+document.body.onclick=function(){
 
-</div>
+document.getElementById("music").play();
+
+}
+
+/* slideshow */
+
+let slides=document.querySelectorAll(".slide");
+
+let index=0;
+
+setInterval(()=>{
+
+slides[index].classList.remove("active");
+
+index++;
+
+if(index>=slides.length) index=0;
+
+slides[index].classList.add("active");
+
+},3000);
+
+/* heart rain */
+
+function heartRain(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(10+Math.random()*25)+"px";
+
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),7000);
+
+}
+
+setInterval(heartRain,200);
+
+/* impossible button */
+
+function moveButton(){
+
+let btn=document.getElementById("no");
+
+let x=Math.random()*(window.innerWidth-200);
+
+let y=Math.random()*(window.innerHeight-100);
+
+btn.style.left=x+"px";
+
+btn.style.top=y+"px";
+
+}
+
+/* love */
+
+function love(){
+
+alert("Maesaroh ❤️\n\nTerima kasih sudah memilih Iphit.\nSemoga cerita kita tidak pernah berakhir.\nI Love You ❤️");
+
+}
+
+</script>
 
 </body>
 </html>

@@ -17,7 +17,7 @@ background-size:cover;
 background-position:center;
 }
 
-/* overlay */
+/* cinematic overlay */
 
 body::before{
 content:"";
@@ -41,7 +41,7 @@ justify-content:center;
 align-items:center;
 font-size:50px;
 background:black;
-animation:fadeout 6s forwards;
+animation:fadeout 7s forwards;
 z-index:10;
 }
 
@@ -65,6 +65,8 @@ align-items:center;
 padding:20px;
 }
 
+/* photo circle */
+
 .photo{
 width:230px;
 height:230px;
@@ -72,7 +74,10 @@ border-radius:50%;
 object-fit:cover;
 border:5px solid white;
 box-shadow:0 0 30px rgba(255,255,255,0.7);
+margin-top:20px;
 }
+
+/* letter */
 
 .letter{
 max-width:600px;
@@ -117,85 +122,43 @@ animation:fall linear forwards;
 to{transform:translateY(110vh);}
 }
 
-/* yes screen */
+/* final screen */
 
 #yesScreen{
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
 background:black;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+flex-direction:column;
 font-size:40px;
 visibility:hidden;
-z-index:20;
-}
-
-/* slideshow */
-
-#slideShowScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-visibility:hidden;
-z-index:30;
-}
-
-/* cinematic slideshow */
-
-.slideBox{
-width:80vw;
-height:80vh;
-position:relative;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:contain;
-opacity:0;
-transition:opacity 1.5s ease;
-}
-
-.slide.active{
-opacity:1;
 }
 
 </style>
+
 </head>
 
 <body onclick="playMusic()">
 
-<!-- opening -->
-
 <div id="opening">
+
 <div>Love Story</div>
 <div style="font-size:28px;margin-top:10px;">
 Iphit ❤️ Maesaroh
 </div>
+
 <div style="font-size:16px;margin-top:15px;">
 Klik layar untuk memulai
 </div>
+
 </div>
 
 <audio id="music" loop>
 <source src="musik.mp3">
 </audio>
-
-<!-- main page -->
 
 <div id="content">
 
@@ -226,38 +189,19 @@ aku ingin kamu selalu ada di ceritaku.
 
 </div>
 
-<!-- YES screen -->
-
 <div id="yesScreen">
 
-<div>Terima kasih telah Mau ❤️</div>
+<div>She Said YES ❤️</div>
 
 <div style="font-size:22px;margin-top:20px">
-I Love You MAESAROH ❤️❤️❤️
-</div>
-
-</div>
-
-<!-- slideshow -->
-
-<div id="slideShowScreen">
-
-<h1>Our Memories ❤️</h1>
-
-<div class="slideBox">
-
-<img src="foto1.jpg" class="slide active">
-<img src="foto2.jpg" class="slide">
-<img src="foto3.jpg" class="slide">
-<img src="foto4.jpg" class="slide">
-
+Cerita kita baru saja dimulai
 </div>
 
 </div>
 
 <script>
 
-/* play music */
+/* music */
 
 function playMusic(){
 document.getElementById("music").play().catch(()=>{});
@@ -274,7 +218,9 @@ h.className="heart";
 h.innerHTML="❤️";
 
 h.style.left=Math.random()*100+"vw";
+
 h.style.fontSize=(10+Math.random()*30)+"px";
+
 h.style.animationDuration=(4+Math.random()*3)+"s";
 
 document.body.appendChild(h);
@@ -285,398 +231,27 @@ setTimeout(()=>h.remove(),7000);
 
 setInterval(heart,200);
 
-/* button kabur */
+/* impossible button */
 
 function run(){
 
 let btn=document.getElementById("no");
 
 let x=Math.random()*(window.innerWidth-200);
+
 let y=Math.random()*(window.innerHeight-100);
 
 btn.style.left=x+"px";
+
 btn.style.top=y+"px";
 
 }
 
-/* klik yes */
+/* yes button */
 
 function yes(){
 
 document.getElementById("yesScreen").style.visibility="visible";
-
-setTimeout(function(){
-
-document.getElementById("yesScreen").style.visibility="hidden";
-document.getElementById("slideShowScreen").style.visibility="visible";
-
-startSlide();
-
-},3000);
-
-}
-
-/* slideshow */
-
-let slides=document.querySelectorAll(".slide");
-let index=0;
-
-function startSlide(){
-
-setInterval(function(){
-
-slides[index].classList.remove("active");
-
-index++;
-
-if(index>=slides.length){
-index=0;
-}
-
-slides[index].classList.add("active");
-
-},3000);
-
-}
-
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Iphit ❤️ Maesaroh</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Segoe UI;
-color:white;
-text-align:center;
-overflow:hidden;
-background:url(background.jpg);
-background-size:cover;
-background-position:center;
-}
-
-/* overlay */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-}
-
-/* opening */
-
-#opening{
-position:fixed;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-size:50px;
-background:black;
-animation:fadeout 6s forwards;
-z-index:10;
-}
-
-@keyframes fadeout{
-0%{opacity:1}
-80%{opacity:1}
-100%{opacity:0;visibility:hidden}
-}
-
-/* main page */
-
-#content{
-position:absolute;
-top:0;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.photo{
-width:230px;
-height:230px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid white;
-box-shadow:0 0 30px rgba(255,255,255,0.7);
-}
-
-.letter{
-max-width:600px;
-font-size:20px;
-line-height:1.7;
-margin-top:20px;
-}
-
-/* buttons */
-
-button{
-padding:15px 30px;
-font-size:18px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-margin:10px;
-}
-
-#yes{
-background:#2ecc71;
-color:white;
-}
-
-#no{
-background:#ff2e63;
-color:white;
-position:absolute;
-left:60%;
-top:80%;
-}
-
-/* heart rain */
-
-.heart{
-position:fixed;
-top:-10px;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-to{transform:translateY(110vh);}
-}
-
-/* YES screen */
-
-#yesScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-size:40px;
-visibility:hidden;
-z-index:20;
-}
-
-/* slideshow screen */
-
-#slideShowScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-visibility:hidden;
-z-index:30;
-}
-
-.slideBox{
-width:320px;
-height:320px;
-position:relative;
-overflow:hidden;
-border-radius:20px;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-transition:1s;
-}
-
-.slide.active{
-opacity:1;
-}
-
-</style>
-</head>
-
-<body onclick="playMusic()">
-
-<!-- opening -->
-
-<div id="opening">
-<div>Love Story</div>
-<div style="font-size:28px;margin-top:10px;">
-Iphit ❤️ Maesaroh
-</div>
-<div style="font-size:16px;margin-top:15px;">
-Klik layar untuk memulai
-</div>
-</div>
-
-<audio id="music" loop>
-<source src="musik.mp3">
-</audio>
-
-<!-- main page -->
-
-<div id="content">
-
-<h1>Hai Maesaroh ❤️</h1>
-
-<img src="foto1.jpg" class="photo">
-
-<div class="letter">
-
-Sejak aku mengenalmu,
-hidup terasa berbeda.
-
-Hari-hari terasa lebih hangat.
-Senyummu selalu hadir dalam pikiranku.
-
-Dan tanpa sadar,
-aku ingin kamu selalu ada di ceritaku.
-
-</div>
-
-<h2>Maesaroh ❤️</h2>
-<h3>Maukah kamu menjadi bagian dari hidupku?</h3>
-
-<button id="yes" onclick="yes()">Aku Mau ❤️</button>
-<button id="no" onmouseover="run()">Aku Tidak Mau 😆</button>
-
-</div>
-
-<!-- yes screen -->
-
-<div id="yesScreen">
-
-<div>Terima kasih telah Mau ❤️</div>
-
-<div style="font-size:22px;margin-top:20px">
-I Love You MAESAROH ❤️❤️❤️
-</div>
-
-</div>
-
-<!-- slideshow -->
-
-<div id="slideShowScreen">
-
-<h1>Our Memories ❤️</h1>
-
-<div class="slideBox">
-
-<img src="foto1.jpg" class="slide active">
-<img src="foto2.jpg" class="slide">
-<img src="foto3.jpg" class="slide">
-<img src="foto4.jpg" class="slide">
-
-</div>
-
-</div>
-
-<script>
-
-/* play music */
-
-function playMusic(){
-document.getElementById("music").play().catch(()=>{});
-}
-
-/* heart rain */
-
-function heart(){
-
-let h=document.createElement("div");
-
-h.className="heart";
-
-h.innerHTML="❤️";
-
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=(10+Math.random()*30)+"px";
-h.style.animationDuration=(4+Math.random()*3)+"s";
-
-document.body.appendChild(h);
-
-setTimeout(()=>h.remove(),7000);
-
-}
-
-setInterval(heart,200);
-
-/* button kabur */
-
-function run(){
-
-let btn=document.getElementById("no");
-
-let x=Math.random()*(window.innerWidth-200);
-let y=Math.random()*(window.innerHeight-100);
-
-btn.style.left=x+"px";
-btn.style.top=y+"px";
-
-}
-
-/* klik yes */
-
-function yes(){
-
-document.getElementById("yesScreen").style.visibility="visible";
-
-setTimeout(function(){
-
-document.getElementById("yesScreen").style.visibility="hidden";
-document.getElementById("slideShowScreen").style.visibility="visible";
-
-startSlide();
-
-},3000);
-
-}
-
-/* slideshow */
-
-let slides=document.querySelectorAll(".slide");
-let index=0;
-
-function startSlide(){
-
-setInterval(function(){
-
-slides[index].classList.remove("active");
-
-index++;
-
-if(index>=slides.length){
-index=0;
-}
-
-slides[index].classList.add("active");
-
-},3000);
 
 }
 

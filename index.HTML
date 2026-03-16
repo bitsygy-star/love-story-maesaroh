@@ -17,7 +17,7 @@ background-size:cover;
 background-position:center;
 }
 
-/* overlay */
+/* dark overlay */
 
 body::before{
 content:"";
@@ -27,7 +27,7 @@ height:100%;
 background:rgba(0,0,0,0.6);
 }
 
-/* opening */
+/* opening screen */
 
 #opening{
 position:fixed;
@@ -49,7 +49,7 @@ z-index:10;
 100%{opacity:0;visibility:hidden}
 }
 
-/* content */
+/* main content */
 
 #content{
 position:absolute;
@@ -63,14 +63,19 @@ align-items:center;
 padding:20px;
 }
 
+/* slideshow circle */
+
 .photo{
-width:230px;
-height:230px;
+width:240px;
+height:240px;
 border-radius:50%;
 object-fit:cover;
 border:5px solid white;
 box-shadow:0 0 30px rgba(255,255,255,0.8);
+transition:1s;
 }
+
+/* love letter */
 
 .letter{
 max-width:600px;
@@ -121,12 +126,13 @@ to{transform:translateY(110vh);}
 position:fixed;
 width:100%;
 height:100%;
-background:black;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(6px);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-size:50px;
+font-size:45px;
 visibility:hidden;
 z-index:100;
 }
@@ -149,9 +155,12 @@ to{opacity:1;transform:translateY(0);}
 
 <body onclick="playMusic()">
 
+<!-- OPENING -->
+
 <div id="opening">
 
 <div>Love Story</div>
+
 <div style="font-size:28px;margin-top:10px;">
 Iphit ❤️ Maesaroh
 </div>
@@ -162,15 +171,19 @@ Klik layar untuk memulai
 
 </div>
 
+<!-- MUSIC -->
+
 <audio id="music" loop>
 <source src="musik.mp3">
 </audio>
+
+<!-- CONTENT -->
 
 <div id="content">
 
 <h1>Hai Maesaroh ❤️</h1>
 
-<img src="foto1.jpg" class="photo">
+<img id="slide" src="foto1.jpg" class="photo">
 
 <div class="letter">
 
@@ -196,10 +209,16 @@ di setiap cerita hidupku.
 
 </div>
 
+<!-- YES SCREEN -->
+
 <div id="yesScreen">
 
 <div>Terima kasih telah bersedia ❤️</div>
-<div>Aku akan selalu berusaha membuatmu bahagia, saat ini dan selamanya</div>
+
+<div style="font-size:26px;margin-top:15px;">
+Aku akan selalu berusaha membuatmu bahagia
+</div>
+
 <div id="yesText">
 I LOVE YOU Maesaroh ❤️❤️❤️
 </div>
@@ -208,13 +227,36 @@ I LOVE YOU Maesaroh ❤️❤️❤️
 
 <script>
 
-/* music */
+/* MUSIC */
 
 function playMusic(){
 document.getElementById("music").play().catch(()=>{});
 }
 
-/* heart rain */
+/* PHOTO SLIDESHOW */
+
+let photos=[
+"foto1.jpg",
+"foto2.jpg",
+"foto3.jpg",
+"foto4.jpg"
+];
+
+let index=0;
+
+setInterval(function(){
+
+index++;
+
+if(index>=photos.length){
+index=0;
+}
+
+document.getElementById("slide").src=photos[index];
+
+},3000);
+
+/* HEART RAIN */
 
 function heart(){
 
@@ -238,7 +280,7 @@ setTimeout(()=>h.remove(),7000);
 
 setInterval(heart,200);
 
-/* impossible button */
+/* RUN BUTTON */
 
 function run(){
 
@@ -249,12 +291,11 @@ let x=Math.random()*(window.innerWidth-200);
 let y=Math.random()*(window.innerHeight-100);
 
 btn.style.left=x+"px";
-
 btn.style.top=y+"px";
 
 }
 
-/* YES button */
+/* YES BUTTON */
 
 function yes(){
 
@@ -264,11 +305,11 @@ fireworks();
 
 }
 
-/* fireworks hearts */
+/* HEART FIREWORK */
 
 function fireworks(){
 
-for(let i=0;i<60;i++){
+for(let i=0;i<80;i++){
 
 setTimeout(()=>{
 
@@ -290,7 +331,7 @@ document.body.appendChild(h);
 
 setTimeout(()=>h.remove(),4000);
 
-},i*80);
+},i*60);
 
 }
 

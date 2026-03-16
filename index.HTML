@@ -17,7 +17,7 @@ background-size:cover;
 background-position:center;
 }
 
-/* dark overlay */
+/* overlay */
 
 body::before{
 content:"";
@@ -27,7 +27,7 @@ height:100%;
 background:rgba(0,0,0,0.6);
 }
 
-/* opening screen */
+/* opening */
 
 #opening{
 position:fixed;
@@ -49,7 +49,7 @@ z-index:10;
 100%{opacity:0;visibility:hidden}
 }
 
-/* main content */
+/* main */
 
 #content{
 position:absolute;
@@ -63,7 +63,7 @@ align-items:center;
 padding:20px;
 }
 
-/* slideshow circle */
+/* slideshow */
 
 .photo{
 width:240px;
@@ -75,7 +75,7 @@ box-shadow:0 0 30px rgba(255,255,255,0.8);
 transition:1s;
 }
 
-/* love letter */
+/* letter */
 
 .letter{
 max-width:600px;
@@ -132,22 +132,34 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-size:45px;
+font-size:40px;
 visibility:hidden;
+opacity:0;
+transition:0.6s;
 z-index:100;
 }
 
-#yesText{
-font-size:28px;
+/* couple photo */
+
+.couple{
+width:260px;
+height:260px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid white;
+box-shadow:0 0 40px pink;
 margin-top:20px;
-opacity:0;
-animation:showLove 3s forwards;
-animation-delay:2s;
+animation:glow 2s infinite alternate;
 }
 
-@keyframes showLove{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
+@keyframes glow{
+from{box-shadow:0 0 20px pink;}
+to{box-shadow:0 0 60px red;}
+}
+
+#yesText{
+font-size:26px;
+margin-top:20px;
 }
 
 </style>
@@ -155,7 +167,7 @@ to{opacity:1;transform:translateY(0);}
 
 <body onclick="playMusic()">
 
-<!-- OPENING -->
+<!-- opening -->
 
 <div id="opening">
 
@@ -171,13 +183,11 @@ Klik layar untuk memulai
 
 </div>
 
-<!-- MUSIC -->
-
 <audio id="music" loop>
 <source src="musik.mp3">
 </audio>
 
-<!-- CONTENT -->
+<!-- content -->
 
 <div id="content">
 
@@ -215,31 +225,27 @@ di setiap cerita hidupku.
 
 <div>Terima kasih telah bersedia ❤️</div>
 
-<div style="font-size:26px;margin-top:15px;">
-Aku akan selalu berusaha membuatmu bahagia, saat ini dan selamanya
-</div>
+<img src="foto5.jpg" class="couple">
 
 <div id="yesText">
 I LOVE YOU Maesaroh ❤️❤️❤️
 </div>
-<button onclick="back()" style="margin-top:30px;background:#ffffff;color:#ff2e63;">
+
+<button onclick="back()" style="margin-top:30px;background:#ff2e63;color:white;">
 Kembali ❤️
 </button>
+
 </div>
-function back(){
 
-document.getElementById("yesScreen").style.visibility="hidden";
-
-}
 <script>
 
-/* MUSIC */
+/* music */
 
 function playMusic(){
 document.getElementById("music").play().catch(()=>{});
 }
 
-/* PHOTO SLIDESHOW */
+/* slideshow */
 
 let photos=[
 "foto1.jpg",
@@ -262,7 +268,7 @@ document.getElementById("slide").src=photos[index];
 
 },3000);
 
-/* HEART RAIN */
+/* heart rain */
 
 function heart(){
 
@@ -286,7 +292,7 @@ setTimeout(()=>h.remove(),7000);
 
 setInterval(heart,200);
 
-/* RUN BUTTON */
+/* impossible button */
 
 function run(){
 
@@ -301,17 +307,34 @@ btn.style.top=y+"px";
 
 }
 
-/* YES BUTTON */
+/* yes */
 
 function yes(){
 
-document.getElementById("yesScreen").style.visibility="visible";
+let screen=document.getElementById("yesScreen");
+
+screen.style.visibility="visible";
+screen.style.opacity="1";
 
 fireworks();
 
 }
 
-/* HEART FIREWORK */
+/* back */
+
+function back(){
+
+let screen=document.getElementById("yesScreen");
+
+screen.style.opacity="0";
+
+setTimeout(()=>{
+screen.style.visibility="hidden";
+},600);
+
+}
+
+/* fireworks */
 
 function fireworks(){
 
@@ -324,13 +347,9 @@ let h=document.createElement("div");
 h.innerHTML="❤️";
 
 h.style.position="fixed";
-
 h.style.left=Math.random()*100+"vw";
-
 h.style.top="-20px";
-
 h.style.fontSize=(20+Math.random()*30)+"px";
-
 h.style.animation="fall 4s linear";
 
 document.body.appendChild(h);

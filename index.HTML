@@ -1,6 +1,6 @@
-﻿<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Love Story Maesaroh ❤️</title>
@@ -13,13 +13,10 @@ font-family:'Segoe UI',sans-serif;
 color:white;
 text-align:center;
 overflow:hidden;
-
 background-image:url("background.jpg");
 background-size:cover;
 background-position:center;
 }
-
-/* overlay cinematic */
 
 body::before{
 content:"";
@@ -30,8 +27,6 @@ width:100%;
 height:100%;
 background:rgba(0,0,0,0.5);
 }
-
-/* opening */
 
 #opening{
 position:fixed;
@@ -53,8 +48,6 @@ z-index:10;
 100%{opacity:0;visibility:hidden;}
 }
 
-/* main content */
-
 #content{
 position:absolute;
 top:0;
@@ -67,8 +60,6 @@ align-items:center;
 padding:20px;
 }
 
-/* photo */
-
 .photo{
 width:220px;
 height:220px;
@@ -78,16 +69,12 @@ object-fit:cover;
 margin-top:20px;
 }
 
-/* letter */
-
 .letter{
 max-width:600px;
 font-size:20px;
 margin-top:20px;
 line-height:1.6;
 }
-
-/* heart rain */
 
 .heart{
 position:fixed;
@@ -99,8 +86,6 @@ animation:fall 6s linear infinite;
 0%{transform:translateY(-10px);}
 100%{transform:translateY(100vh);}
 }
-
-/* buttons */
 
 button{
 padding:14px 26px;
@@ -129,12 +114,9 @@ transform:translate(-50%,-50%);
 
 <script>
 
-/* heart animation */
-
 function heartRain(){
 
 let heart=document.createElement("div");
-
 heart.className="heart";
 heart.innerHTML="❤️";
 
@@ -149,22 +131,14 @@ setTimeout(()=>{heart.remove();},6000);
 
 setInterval(heartRain,300);
 
-
-/* play music */
-
 function startMusic(){
-document.getElementById("music").play();
+let music=document.getElementById("music");
+music.play().catch(()=>{});
 }
-
-
-/* romantic button */
 
 function love(){
-alert("Maesaroh ❤️\n\nTerima kasih telah memilih "MAU" 🥰,\nTerima kasih sudah hadir di hidupku mae.\nSemoga cerita kita tidak pernah berakhir.\nI LOVE YOU Maesaroh ❤️❤️❤️🥰🥰🥰");
+alert("Maesaroh ❤️\n\nTerima kasih telah memilih 'MAU' 🥰\nTerima kasih sudah hadir di hidupku mae.\nSemoga cerita kita tidak pernah berakhir.\nI LOVE YOU Maesaroh ❤️❤️❤️");
 }
-
-
-/* impossible button */
 
 function moveButton(){
 
@@ -182,15 +156,12 @@ btn.style.top=y+"px";
 
 </head>
 
-function startMusic(){
-let music=document.getElementById("music");
-music.play().catch(()=>{});
-}
+<body onclick="startMusic()">
 
 <div id="opening">
 <div>Love Story</div>
 <div style="font-size:28px;margin-top:10px;">Iphit ❤️ Maesaroh</div>
-<div style="font-size:15px;margin-bottom:2px;">_Klik dimanapun to play music_</div>
+<div style="font-size:15px;margin-bottom:2px;">Klik dimanapun untuk memutar musik</div>
 </div>
 
 <audio id="music" loop>
@@ -217,7 +188,6 @@ namamu selalu hadir di pikiranku.
 </div>
 
 <h2>Maesaroh, maukah kamu terus menjadi bagian dari cerita Iphit?</h2>
-<h2>(Please Klik Tombol (Aku mau / Aku tidak mau)</h2>
 
 <button id="yes" onclick="love()">Aku mau ❤️</button>
 

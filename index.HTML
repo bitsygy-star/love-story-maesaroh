@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Love Story Iphit_Maesaroh ❤️</title>
+<title>Iphit ❤️ Maesaroh</title>
 
 <style>
 
@@ -12,23 +12,21 @@ font-family:Segoe UI;
 color:white;
 text-align:center;
 overflow:hidden;
-
 background:url(background.jpg);
 background-size:cover;
 background-position:center;
 }
 
-/* overlay */
+/* cinematic overlay */
 
 body::before{
 content:"";
 position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.55);
 top:0;
 left:0;
-z-index:-1;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
 }
 
 /* opening */
@@ -41,19 +39,19 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+font-size:50px;
 background:black;
-font-size:45px;
-animation:fadeout 6s forwards;
-z-index:5;
+animation:fadeout 7s forwards;
+z-index:10;
 }
 
 @keyframes fadeout{
-0%{opacity:1;}
-80%{opacity:1;}
-100%{opacity:0;visibility:hidden;}
+0%{opacity:1}
+80%{opacity:1}
+100%{opacity:0;visibility:hidden}
 }
 
-/* content */
+/* main */
 
 #content{
 position:absolute;
@@ -67,32 +65,16 @@ align-items:center;
 padding:20px;
 }
 
-/* slideshow */
-.slideshow{
-box-shadow:0 0 25px rgba(255,255,255,0.6);
-}
-.slideshow{
-width:220px;
-height:220px;
+/* photo circle */
+
+.photo{
+width:230px;
+height:230px;
 border-radius:50%;
-overflow:hidden;
-border:4px solid white;
-position:relative;   /* ini yang penting */
-}
-
-.slide{
-width:100%;
-height:100%;
 object-fit:cover;
-position:absolute;
-top:0;
-left:0;
-opacity:0;
-transition:1s;
-}
-
-.active{
-opacity:1;
+border:5px solid white;
+box-shadow:0 0 30px rgba(255,255,255,0.7);
+margin-top:20px;
 }
 
 /* letter */
@@ -100,14 +82,14 @@ opacity:1;
 .letter{
 max-width:600px;
 font-size:20px;
-margin-top:20px;
 line-height:1.7;
+margin-top:20px;
 }
 
 /* buttons */
 
 button{
-padding:14px 28px;
+padding:15px 30px;
 font-size:18px;
 border:none;
 border-radius:12px;
@@ -137,127 +119,121 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
-to{
-transform:translateY(110vh);
+to{transform:translateY(110vh);}
 }
+
+/* final screen */
+
+#yesScreen{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-size:40px;
+visibility:hidden;
 }
 
 </style>
 
 </head>
 
-<body>
+<body onclick="playMusic()">
 
 <div id="opening">
 
 <div>Love Story</div>
-
-<div style="font-size:28px;margin-top:10px">
+<div style="font-size:28px;margin-top:10px;">
 Iphit ❤️ Maesaroh
 </div>
 
-<div style="font-size:15px;margin-top:10px">
+<div style="font-size:16px;margin-top:15px;">
 Klik layar untuk memulai
 </div>
 
 </div>
 
 <audio id="music" loop>
-<source src="musik.mp3" type="audio/mpeg">
+<source src="musik.mp3">
 </audio>
 
 <div id="content">
 
 <h1>Hai Maesaroh ❤️</h1>
 
-<div class="slideshow">
-
-<img src="foto1.jpg" class="slide active">
-<img src="foto2.jpg" class="slide">
-<img src="foto3.jpg" class="slide">
-
-</div>
+<img src="foto1.jpg" class="photo">
 
 <div class="letter">
 
-Kadang kita tidak tahu bagaimana sebuah cerita dimulai.
+Sejak aku mengenalmu,
+hidup terasa berbeda.
 
-Tapi sejak aku mengenalmu,
-hidup terasa lebih hangat.
-
-Ada sesuatu dalam dirimu
-yang membuat hari-hari terasa berbeda.
+Hari-hari terasa lebih hangat.
+Senyummu selalu hadir dalam pikiranku.
 
 Dan tanpa sadar,
-namamu selalu ada dalam doaku.
+aku ingin kamu selalu ada di ceritaku.
 
 </div>
 
 <h2>Maesaroh ❤️</h2>
 
-<h3>Maukah kamu terus menjadi bagian dari cerita Iphit?</h3>
+<h3>Maukah kamu menjadi bagian dari hidupku?</h3>
 
-<button id="yes" onclick="love()">Aku Mau ❤️</button>
+<button id="yes" onclick="yes()">Aku Mau ❤️</button>
 
-<button id="no" onmouseover="moveButton()">Aku Tidak Mau 😆</button>
+<button id="no" onmouseover="run()">Aku Tidak Mau 😆</button>
+
+</div>
+
+<div id="yesScreen">
+
+<div>She Said YES ❤️</div>
+
+<div style="font-size:22px;margin-top:20px">
+Cerita kita baru saja dimulai
+</div>
 
 </div>
 
 <script>
 
-/* start music */
+/* music */
 
-document.body.onclick=function(){
-
-document.getElementById("music").play();
-
+function playMusic(){
+document.getElementById("music").play().catch(()=>{});
 }
-
-/* slideshow */
-
-let slides=document.querySelectorAll(".slide");
-
-let index=0;
-
-setInterval(()=>{
-
-slides[index].classList.remove("active");
-
-index++;
-
-if(index>=slides.length) index=0;
-
-slides[index].classList.add("active");
-
-},3000);
 
 /* heart rain */
 
-function heartRain(){
+function heart(){
 
-let heart=document.createElement("div");
+let h=document.createElement("div");
 
-heart.className="heart";
+h.className="heart";
 
-heart.innerHTML="❤️";
+h.innerHTML="❤️";
 
-heart.style.left=Math.random()*100+"vw";
+h.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=(10+Math.random()*25)+"px";
+h.style.fontSize=(10+Math.random()*30)+"px";
 
-heart.style.animationDuration=(4+Math.random()*3)+"s";
+h.style.animationDuration=(4+Math.random()*3)+"s";
 
-document.body.appendChild(heart);
+document.body.appendChild(h);
 
-setTimeout(()=>heart.remove(),7000);
+setTimeout(()=>h.remove(),7000);
 
 }
 
-setInterval(heartRain,200);
+setInterval(heart,200);
 
 /* impossible button */
 
-function moveButton(){
+function run(){
 
 let btn=document.getElementById("no");
 
@@ -271,11 +247,11 @@ btn.style.top=y+"px";
 
 }
 
-/* love */
+/* yes button */
 
-function love(){
+function yes(){
 
-alert("Maesaroh ❤️\n\nTerima kasih sudah memilih "Mau" .\nSemoga cerita kita tidak pernah berakhir.\nI Love You ❤️");
+document.getElementById("yesScreen").style.visibility="visible";
 
 }
 
